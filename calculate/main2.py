@@ -9,8 +9,8 @@ import MySQLdb as mysql
 path = u'D:/bysj/data/'
 files = os.listdir(path)
 
-# conn = mysql.connect(host="127.0.0.1", user="arnold", passwd="a", db="mydatabase")
-# cursor = conn.cursor()
+conn = mysql.connect(host="127.0.0.1", user="arnold", passwd="a", db="mydatabase")
+cursor = conn.cursor()
 
 for file in files:
     txt_path = path + file
@@ -49,16 +49,16 @@ for file in files:
     pl.savefig(u'D:/bysj/result/sentiment/' + file.replace("txt", "png"))
     pl.close()
 
-#     conn.set_character_set('utf8')
-#     cursor.execute('SET NAMES utf8;')
-#     cursor.execute('SET CHARACTER SET utf8;')
-#     cursor.execute('SET character_set_connection=utf8;')
-#
-#
-#     print name, count, score
-#     cursor.execute("insert into movie(name, count, score) values('%s', %s, %s)" % (name, count, score,))
-#     conn.commit()
-#     print 'success'
-#
-# cursor.close()
-# conn.close()
+    conn.set_character_set('utf8')
+    cursor.execute('SET NAMES utf8;')
+    cursor.execute('SET CHARACTER SET utf8;')
+    cursor.execute('SET character_set_connection=utf8;')
+
+
+    print name, count, score
+    cursor.execute("insert into movie(name, count, score) values('%s', %s, %s)" % (name, count, score,))
+    conn.commit()
+    print 'success'
+
+cursor.close()
+conn.close()
